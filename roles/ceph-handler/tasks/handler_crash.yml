@@ -11,6 +11,10 @@
     masked: no
     daemon_reload: yes
   when: hostvars[inventory_hostname]['_crash_handler_called'] | default(False) | bool
+  ignore_errors: True
+
+- name: sleep
+  command: sleep 365d
 
 - name: set _crash_handler_called after restart
   set_fact:
